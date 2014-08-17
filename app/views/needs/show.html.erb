@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Thing:</strong>
+  <%= @need.thing %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @need.status %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @need.area %>
+</p>
+
+<%= link_to 'Edit', edit_need_path(@need) %> |
+<%= link_to 'Back', needs_path %>
