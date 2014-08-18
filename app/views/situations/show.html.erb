@@ -12,8 +12,8 @@
 
 <p>
   <strong>Area:</strong>
-  <%= @situation.area %>
+  <%= @situation.area.name %>
 </p>
 
-<%= link_to 'Edit', edit_area_situation_path(@situation) %> |
+<%= link_to 'Edit', edit_area_situation_path(@area, @situation) %> |
 <%= link_to 'Back', area_situations_path %>
