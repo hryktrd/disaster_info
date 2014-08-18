@@ -10,10 +10,5 @@
   <%= @need.status %>
 </p>
 
-<p>
-  <strong>Area:</strong>
-  <%= @need.area %>
-</p>
-
-<%= link_to 'Edit', edit_need_path(@need) %> |
-<%= link_to 'Back', needs_path %>
+<%= link_to 'Edit', edit_area_need_path(@area, @need) %> |
+<%= link_to 'Back', area_needs_path %>

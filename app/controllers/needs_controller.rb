@@ -44,7 +44,7 @@ class NeedsController < ApplicationController
   def update
     respond_to do |format|
       if @need.update(need_params)
-        format.html { redirect_to @need, notice: 'Need was successfully updated.' }
+        format.html { redirect_to area_need_path(@area, @need), notice: 'Need was successfully updated.' }
         format.json { render :show, status: :ok, location: @need }
       else
         format.html { render :edit }

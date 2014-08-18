@@ -15,9 +15,9 @@
       <tr>
         <td><%= need.thing %></td>
         <td><%= need.status %></td>
-        <td><%= link_to 'Show', need %></td>
-        <td><%= link_to 'Edit', edit_need_path(need) %></td>
-        <td><%= link_to 'Destroy', need, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', area_need_path(@area,need) %></td>
+        <td><%= link_to 'Edit', edit_area_need_path(@area,need) %></td>
+        <td><%= link_to 'Destroy', area_need_path(@area,need), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Need', new_need_path %>
+<%= link_to 'New Need', new_area_need_path(@area) %>
