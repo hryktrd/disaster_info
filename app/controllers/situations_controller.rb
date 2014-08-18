@@ -1,5 +1,6 @@
 class SituationsController < ApplicationController
   before_action :set_situation, only: [:show, :edit, :update, :destroy]
+  before_action :load_area
 
   # GET /situations
   # GET /situations.json
@@ -24,11 +25,12 @@ class SituationsController < ApplicationController
   # POST /situations
   # POST /situations.json
   def create
-    @situation = Situation.new(situation_params)
+    # @situation = Situation.new(situation_params)
+    @situation = @area.situations.create(situation_params)
 
     respond_to do |format|
       if @situation.save
-        format.html { redirect_to @situation, notice: 'Situation was successfully created.' }
+        format.html { redirect_to area_situations_path(@area), notice: 'Situation was successfully created.' }
         format.json { render :show, status: :created, location: @situation }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class SituationsController < ApplicationController
   def update
     respond_to do |format|
       if @situation.update(situation_params)
-        format.html { redirect_to @situation, notice: 'Situation was successfully updated.' }
+        format.html { redirect_to area_situations_path(@area), notice: 'Situation was successfully updated.' }
         format.json { render :show, status: :ok, location: @situation }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class SituationsController < ApplicationController
   def destroy
     @situation.destroy
     respond_to do |format|
-      format.html { redirect_to situations_url, notice: 'Situation was successfully destroyed.' }
+      format.html { redirect_to area_situations_path(@area), notice: 'Situation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,6 +68,11 @@ class SituationsController < ApplicationController
     def set_situation
       @situation = Situation.find(params[:id])
     end
+
+    def load_area
+      @area = Area.find(params[:area_id])
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def situation_params

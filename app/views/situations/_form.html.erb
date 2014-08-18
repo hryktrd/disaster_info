@@ -1,4 +1,4 @@
-<%= form_for(@situation) do |f| %>
+<%= form_for [@area, @situation] do |f| %>
   <% if @situation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@situation.errors.count, "error") %> prohibited this situation from being saved:</h2>
@@ -19,10 +19,7 @@
     <%= f.label :status %><br>
     <%= f.check_box :status %>
   </div>
-  <div class="field">
-    <%= f.label :area_id %><br>
-    <%= f.text_field :area_id %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

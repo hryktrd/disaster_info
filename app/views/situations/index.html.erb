@@ -15,10 +15,10 @@
       <tr>
         <td><%= situation.text %></td>
         <td><%= situation.status %></td>
-        <td><%= situation.area %></td>
-        <td><%= link_to 'Show', situation %></td>
-        <td><%= link_to 'Edit', edit_situation_path(situation) %></td>
-        <td><%= link_to 'Destroy', situation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= situation.area.name %></td>
+        <td><%= link_to 'Show', area_situation_path(@area,situation) %></td>
+        <td><%= link_to 'Edit', edit_area_situation_path(@area, situation) %></td>
+        <td><%= link_to 'Destroy', area_situation_path(@area,situation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Situation', new_situation_path %>
+<%= link_to 'New Situation', new_area_situation_path %>

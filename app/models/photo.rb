@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :area
+  belongs_to :situation
   #validate :file_invalid?
 
   #写真アップロード用
