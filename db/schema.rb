@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817134314) do
+ActiveRecord::Schema.define(version: 20140819070443) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -43,14 +43,16 @@ ActiveRecord::Schema.define(version: 20140817134314) do
   add_index "needs", ["area_id"], name: "index_needs_on_area_id"
 
   create_table "photos", force: true do |t|
-    t.binary   "data",       limit: 3145728
-    t.string   "type"
+    t.binary   "data",         limit: 3145728
+    t.string   "datatype"
     t.integer  "area_id"
+    t.integer  "situation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "photos", ["area_id"], name: "index_photos_on_area_id"
+  add_index "photos", ["situation_id"], name: "index_photos_on_situation_id"
 
   create_table "situations", force: true do |t|
     t.text     "text"

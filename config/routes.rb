@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   resources :areas do
     resources :comments
     resources :photos
-    resources :situations
+    resources :situations do
+      resources :photos
+    end
     resources :needs
   end
+
+  get "/view_photo/:id" => "photos#view_photo", :as => :view_photo
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

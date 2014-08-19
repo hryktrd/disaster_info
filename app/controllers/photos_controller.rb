@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :view_photo]
+  before_action :load_area, only: [:show, :edit, :update, :destroy, :new, :index, :create]
+  before_action :load_situation, only: [:show, :edit, :update, :destroy, :new, :index, :create]
 
   # GET /photos
   # GET /photos.json
@@ -21,14 +23,17 @@ class PhotosController < ApplicationController
   def edit
   end
 
+  def view_photo
+    send_data @photo.data, type: @photo.datatype, disposition: :inline
+  end
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
-
+    # @photo = Photo.new(photo_params)
+    @photo = @situation.photos.create(photo_params)
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        format.html { redirect_to area_situation_path(@area, @situation), notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to area_situation_path(@area, @situation), notice: 'Photo was successfully updated.' }
         format.json { render :show, status: :ok, location: @photo }
       else
         format.html { render :edit }
@@ -56,7 +61,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to area_situation_path(@area, @situation), notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +72,19 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
     end
 
+    def load_area
+      @area = Area.find(params[:area_id])
+    end
+
+    def load_situation
+      @situation = Situation.find(params[:situation_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:data, :type, :area_id)
+      params.require(:photo).permit(:upfile, :area_id, :situation_id)
+    end
+    def situation_params
+      params.require(:situation).permit(:situation_id)
     end
 end
