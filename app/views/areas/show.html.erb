@@ -1,38 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>エリア名、地点名:</strong>
   <%= @area.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>住所:</strong>
   <%= @area.address %>
 </p>
 
 <p>
-  <strong>Tel:</strong>
+  <strong>電話番号:</strong>
   <%= @area.tel %>
 </p>
 
 <p>
-  <strong>Lat:</strong>
+  <strong>緯度:</strong>
   <%= @area.lat %>
 </p>
 
 <p>
-  <strong>Lng:</strong>
+  <strong>経度:</strong>
   <%= @area.lng %>
 </p>
 
-<%= link_to 'Edit', edit_area_path(@area) %> |
-<%= link_to 'Back', areas_path %>
+<%= link_to '地点情報編集', edit_area_path(@area) %> |
+<%= link_to '地点一覧に戻る', areas_path %>
 
 <table>
   <thead>
     <tr>
-      <th>Text</th>
-      <th>Status</th>
+      <th>被災状況報告</th>
+      <th>ステータス(解決済みがtrue)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -42,9 +42,9 @@
       <tr>
         <td><%= situation.text %></td>
         <td><%= situation.status %></td>
-        <td><%= link_to 'Show', area_situation_path(@area,situation) %></td>
-        <td><%= link_to 'Edit', edit_area_situation_path(@area,situation) %></td>
-        <td><%= link_to 'Destroy', area_situation_path(@area,situation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細(写真など)', area_situation_path(@area,situation) %></td>
+        <td><%= link_to '編集', edit_area_situation_path(@area,situation) %></td>
+        <td><%= link_to '削除', area_situation_path(@area,situation), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -55,8 +55,8 @@
 <table>
   <thead>
     <tr>
-      <th>Thing</th>
-      <th>Status</th>
+      <th>必要なもの</th>
+      <th>揃ったらtrue、揃ってなければfalse</th>
       <!-- <th>Area</th> -->
       <th colspan="3"></th>
     </tr>
@@ -67,9 +67,9 @@
       <tr>
         <td><%= need.thing %></td>
         <td><%= need.status %></td>
-        <td><%= link_to 'Show', area_need_path(@area,need) %></td>
-        <td><%= link_to 'Edit', edit_area_need_path(@area,need) %></td>
-        <td><%= link_to 'Destroy', area_need_path(@area,need), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', area_need_path(@area,need) %></td>
+        <td><%= link_to '編集', edit_area_need_path(@area,need) %></td>
+        <td><%= link_to '削除', area_need_path(@area,need), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
   </tbody>
