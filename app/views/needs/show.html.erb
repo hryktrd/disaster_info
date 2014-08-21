@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Thing:</strong>
+  <strong>必要な物、事:</strong>
   <%= @need.thing %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong>揃ったかどうか（揃ったらtrue)</strong>
   <%= @need.status %>
 </p>
 
-<%= link_to 'Edit', edit_area_need_path(@area, @need) %> |
-<%= link_to 'Back', area_path(@area) %>
+<%= link_to '編集', edit_area_need_path(@area, @need) %> |
+<%= link_to '地点詳細に戻る', area_path(@area) %>
