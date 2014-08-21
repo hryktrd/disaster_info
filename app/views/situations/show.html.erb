@@ -19,6 +19,7 @@
   <thead>
     <tr>
       <th>写真</th>
+      <th>追加時刻</th>
       <th>削除</th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
     <% @situation.photos.each do |photo| %>
       <tr>
         <td><%= image_tag view_photo_path(photo)%></td>
+        <td><%= photo.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         <td><%= link_to '削除', area_situation_photo_path(@area,@situation,photo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

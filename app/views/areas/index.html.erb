@@ -3,11 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Lat</th>
-      <th>Lng</th>
+      <th>地点名</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>緯度</th>
+      <th>経度</th>
+      <th>作成時刻</th>
+      <th>更新時刻</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,8 @@
         <td><%= area.tel %></td>
         <td><%= area.lat %></td>
         <td><%= area.lng %></td>
+        <td><%= area.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td><%= area.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         <td><%= link_to '詳細', area %></td>
         <td><%= link_to '編集', edit_area_path(area) %></td>
         <td><%= link_to '削除', area, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %></td>
