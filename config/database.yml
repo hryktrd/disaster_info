@@ -25,7 +25,7 @@ production:
   encoding: utf8
   database: disaster_info_production
   pool: 5
-  username: hiroyuki
+  username: <%= ENV['DISASTER_INFO_DATABASE_USER'] %>
   password: <%= ENV['DISASTER_INFO_DATABASE_PASSWORD'] %>
   socket: /var/run/mysqld/mysqld.sock
   host: localhost
